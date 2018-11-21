@@ -8,7 +8,7 @@ public class CouponsTest {
 				// TODO Auto-generated method stub
 			 	// create Db
 			 	MySqlHandler coupondbhandler = new MySqlHandler();
-			 	coupondbhandler.getConnection("127.0.0.1/", "root", "");
+//			 	coupondbhandler.getConnection("127.0.0.1/", "root", "");
 //			 	coupondbhandler.creatDB("couponproj1");
 			 	 
 			 	// create Tables
@@ -28,8 +28,8 @@ public class CouponsTest {
 //			 	coupondbhandler.sqlAction("create TABLE `user` ( `username` VARCHAR(10) NOT NULL)");
 //			 	coupondbhandler.sqlAction("ALTER TABLE users ADD ( userpassword VARCHAR(10) NOT NULL, firstmane VARCHAR(20) NOT NULL )");
 			 	
-//			 	coupondbhandler.sqlAction("INSERT INTO `users` (`usermame`, `userpassword`, `firstmane`) VALUES ('ofir', '123', 'har');");
-//			 	coupondbhandler.sqlAction("select * from  'users' where usermame = 'ofir'");
+			 	coupondbhandler.sqlAction("INSERT INTO `users` (`usermame`, `userpassword`, `firstmane`) VALUES ('ofir', '123', 'har');");
+			 	coupondbhandler.sqlAction("select * from  'users' where usermame = 'ofir'");
 //			 	coupondbhandler.creatDB("couponproj");
 
 //				Users ofir = new Users("m31", "Ofir", "1234");

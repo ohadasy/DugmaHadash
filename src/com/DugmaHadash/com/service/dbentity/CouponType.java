@@ -1,4 +1,4 @@
-package com.DugmaHadash.com.service;
+package com.DugmaHadash.com.service.dbentity;
 
 enum CouponType {
 	food, 
