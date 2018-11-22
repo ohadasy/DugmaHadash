@@ -28,6 +28,7 @@
 
 				case CUSTOMER: {
 					CustomerFacade customerFacade = (CustomerFacade) couponClientFacade;
+					session.setAttribute("customerFacade", customerFacade);
 	%>
 	<h1>
 		Hello
@@ -37,18 +38,20 @@
 		with ID
 		<%=customerFacade.getCustomerID()%>
 	</h1>
+	
+	<form action="customerCoupons.jsp" method="post">
+		<button type="submit" class="customercpn">extract coupons for customer</button>
+	
+	</form>
+	
+	<br>
+	
+	<form action="addCoupons4Customer.jsp" method="post">
+		<button type="submit" class="addcoupons">add coupons for customer</button>
+	
+	</form>
+	
 
-	<div class="customerCoupons">
-		<%
-			
-			String customerId = customerFacade.getCustomerID();
-			List<Coupon> coupons = customerFacade.getCustomeCoupons(customerId);
-		%>
-<%=coupons%>
-
-		<label for="uname"><b>Username</b></label> <input type="text"
-			placeholder="Enter Username" name="uname" required> </label>
-	</div>
 	<%
 	
 		}
