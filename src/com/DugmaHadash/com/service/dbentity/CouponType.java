@@ -1,6 +1,6 @@
 package com.DugmaHadash.com.service.dbentity;
 
-enum CouponType {
+public enum CouponType {
 	food, 
 	electric, 
 	vacation

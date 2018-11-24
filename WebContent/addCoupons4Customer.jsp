@@ -33,6 +33,15 @@ tr:nth-child(even) {
 			String customerId = customerFacade.getCustomerID();
 			List<Coupon> coupons = customerFacade.getAddCoupons4Customer(customerId);
 		%>
+		
+	<h1>
+		Hello
+		<%=customerFacade.getCustomerName()%>
+		from
+		<%=request.getParameter("clientType")%>
+		with ID
+		<%=customerFacade.getCustomerID()%>
+	</h1>
 		<table>
 		 		 <tr>
  		  <th>ID</th>

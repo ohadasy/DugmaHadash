@@ -78,22 +78,12 @@ public class CustomerFacade implements CouponClientFacade {
 		Connection connection = ConnectionPool.getInstance().getConnection();
 		try {
 			PreparedStatement prepareStatement = connection.prepareStatement(
-					"select distinct cpn.id ,  cpn.Title , cpn.start_date , cpn.end_date , cpn.amount"
+					"select distinct cpn.id ,  cpn.Title , cpn.start_date , cpn.end_date , cpn.amount,"
 					+ "cpn.type , cpn.message , cpn.price , cpn.image "
 					+ "from `customer_coupon` cust , `coupon` cpn "
 					+ "where cust.cust_id = ? "
 					+ "AND cpn.id NOT IN (SELECT coupon_id FROM `customer_coupon`);");
-			
-			private long id;
-			private String couponTitle;
-			private Date couponStartDate = new Date();
-			private Date couponEndDate = new Date();
-			private int couponAmount;
-			private CouponType couponType;
-			private String message;
-			private double couponPrice;
-			private String couponImage;
-			
+	
 			
 			
 			
@@ -107,7 +97,10 @@ public class CustomerFacade implements CouponClientFacade {
 				coupon.setCouponStartDate(result.getDate("cpn.start_date"));
 				coupon.setCouponEndDate(result.getDate("cpn.end_date"));
 				coupon.setCouponAmount(result.getInt("cpn.amount"));
-				coupon.setCouponType(result.getString(change));
+//				coupon.setCouponType(result.getString(change));
+				coupon.setMessage(result.getString("cpn.message"));
+				coupon.setCouponPrice(result.getDouble("cpn.price"));
+				coupon.setCouponImage(result.getString("cpn.image"));
 				
 				coupons.add(coupon);
 			}
