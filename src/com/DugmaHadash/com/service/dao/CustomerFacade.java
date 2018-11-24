@@ -5,11 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.DugmaHadash.com.service.ConnectionPool;
 import com.DugmaHadash.com.service.MySqlHandler;
 import com.DugmaHadash.com.service.dbentity.Coupon;
+import com.DugmaHadash.com.service.dbentity.CouponType;
 
 public class CustomerFacade implements CouponClientFacade {
 
@@ -59,6 +61,54 @@ public class CustomerFacade implements CouponClientFacade {
 				coupon.setId(result.getLong("cust.coupon_id"));
 				coupon.setCouponAmount(result.getInt("cpn.amount"));
 				coupon.setCouponTitle(result.getString("cpn.Title"));
+				coupons.add(coupon);
+			}
+			return coupons;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionPool.getInstance().returnconnection(connection);
+		}
+		return new ArrayList<>();
+	}
+	
+	public List<Coupon> getAddCoupons4Customer(String customerID) 
+	{
+		Connection connection = ConnectionPool.getInstance().getConnection();
+		try {
+			PreparedStatement prepareStatement = connection.prepareStatement(
+					"select distinct cpn.id ,  cpn.Title , cpn.start_date , cpn.end_date , cpn.amount"
+					+ "cpn.type , cpn.message , cpn.price , cpn.image "
+					+ "from `customer_coupon` cust , `coupon` cpn "
+					+ "where cust.cust_id = ? "
+					+ "AND cpn.id NOT IN (SELECT coupon_id FROM `customer_coupon`);");
+			
+			private long id;
+			private String couponTitle;
+			private Date couponStartDate = new Date();
+			private Date couponEndDate = new Date();
+			private int couponAmount;
+			private CouponType couponType;
+			private String message;
+			private double couponPrice;
+			private String couponImage;
+			
+			
+			
+			
+			prepareStatement.setLong(1, Long.valueOf(customerID));
+			ResultSet result = prepareStatement.executeQuery();
+			List<Coupon> coupons = new ArrayList<>(); 
+			while (result.next()) {
+				Coupon coupon = new Coupon();
+				coupon.setId(result.getLong("cpn.id"));
+				coupon.setCouponTitle(result.getString("cpn.Title"));
+				coupon.setCouponStartDate(result.getDate("cpn.start_date"));
+				coupon.setCouponEndDate(result.getDate("cpn.end_date"));
+				coupon.setCouponAmount(result.getInt("cpn.amount"));
+				coupon.setCouponType(result.getString(change));
+				
 				coupons.add(coupon);
 			}
 			return coupons;
