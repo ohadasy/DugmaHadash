@@ -58,7 +58,7 @@ public class CustomerFacade implements CouponClientFacade {
 			List<Coupon> coupons = new ArrayList<>(); 
 			while (result.next()) {
 				Coupon coupon = new Coupon();
-				coupon.setId(result.getLong("cust.coupon_id"));
+				coupon.setId(result.getInt("cust.coupon_id"));
 				coupon.setCouponAmount(result.getInt("cpn.amount"));
 				coupon.setCouponTitle(result.getString("cpn.Title"));
 				coupons.add(coupon);
@@ -92,7 +92,7 @@ public class CustomerFacade implements CouponClientFacade {
 			List<Coupon> coupons = new ArrayList<>(); 
 			while (result.next()) {
 				Coupon coupon = new Coupon();
-				coupon.setId(result.getLong("cpn.id"));
+				coupon.setId(result.getInt("cpn.id"));
 				coupon.setCouponTitle(result.getString("cpn.Title"));
 				coupon.setCouponStartDate(result.getDate("cpn.start_date"));
 				coupon.setCouponEndDate(result.getDate("cpn.end_date"));

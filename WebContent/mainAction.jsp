@@ -2,6 +2,7 @@
 	pageEncoding="windows-1255"%>
 <%@ page import="com.DugmaHadash.com.service.dao.*"%>
 <%@ page import="com.DugmaHadash.com.service.dbentity.*"%>
+<%@ page import="com.DugmaHadash.com.service.CouponException" %>
 <%@ page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -22,7 +23,17 @@
 			switch (clientType) {
 				case ADMIN: {
 					AdminFacade adminFacade = (AdminFacade) couponClientFacade;
-
+					session.setAttribute("AdminFacade", adminFacade);
+					
+		%>
+		<h1>
+			Hello admin !
+		<form action="admiAddCoupon.jsp" method="post">
+		<button type="submit" class="adminrcpn">add coupons into the system</button>
+	
+	</form>
+		</h1>
+		<%
 				}
 				break;
 
@@ -54,12 +65,29 @@
 
 	<%
 	
-		}
+				}
 				break;
 			}
 
-		} catch (Throwable t) {
+		} catch (CouponException e) {
+	%>
+	<h1>
+		Hello
+		<%=e.getMessage()%>
 
+	</h1>
+				
+	<%
+
+		} catch (Throwable t) {
+	%>
+	<h1>
+			General error: 
+			<%=t.getMessage()%>
+
+	</h1>
+						
+	<%
 		}
 	%>
 </body>

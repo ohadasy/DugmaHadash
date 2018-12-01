@@ -1,5 +1,7 @@
 package com.DugmaHadash.com.service.dao;
 
+import com.DugmaHadash.com.service.dbentity.Coupon;
+
 public class AdminFacade implements CouponClientFacade {
 
 	@Override
@@ -12,4 +14,7 @@ public class AdminFacade implements CouponClientFacade {
 		return false;
 	}
 
+	public void addNewCoupon(Coupon coupon) {
+		
+	}
 }

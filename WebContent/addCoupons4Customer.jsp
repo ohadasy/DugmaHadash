@@ -42,8 +42,10 @@ tr:nth-child(even) {
 		with ID
 		<%=customerFacade.getCustomerID()%>
 	</h1>
+	<form action="insertNewCoupon4Customer.jsp">
 		<table>
-		 		 <tr>
+		 <tr>
+		  <th></th> 
  		  <th>ID</th>
 		  <th>couponTitle</th>
 		  <th>couponStartDate</th>
@@ -54,11 +56,12 @@ tr:nth-child(even) {
 		  <th>couponPrice</th>
 		  <th>couponImage</th>		  
  		 </tr>
-		<%
+	<%
 		for (Coupon coupon : coupons) {
-			%>
+	%>
 			
 	 		 <tr>
+	 		  <td><input type="radio" name="id" value="<%=coupon.getId() %>"></td>
 	 		  <td><%=coupon.getId() %></td>
 			  <td><%=coupon.getCouponTitle() %></td>
 			  <td><%=coupon.getCouponStartDate() %></td>
@@ -71,12 +74,15 @@ tr:nth-child(even) {
 	 		 </tr>
 	<%
 		}
-		%>
+	%>
 		
 		</table>
+		<br/>
+		<button type="submit" class="customercpn">Buy Now</button>
+		</form>
 
-		<label for="uname"><b>Username</b></label> <input type="text"
-			placeholder="Enter Username" name="uname" required> </label>
+		<!-- label for="uname"><b>Username</b></label> <input type="text"
+			placeholder="Enter Username" name="uname" required> </label-->
 	</div>
 </body>
 </html>
