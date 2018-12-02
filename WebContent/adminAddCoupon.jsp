@@ -16,7 +16,7 @@ if (request.getParameter("id") != null &&
     request.getParameter("title") != null)
 {
 	//do the add
-	AdminFacade adminFacade = (AdminFacade) session.getAttribute("AdminFacede");
+	AdminFacade adminFacade = (AdminFacade) session.getAttribute("adminFacade");
 	Coupon coupon = new Coupon();
 	coupon.setId(Long.parseLong(request.getParameter("id")));
 	coupon.setCouponTitle(request.getParameter("title"));
@@ -26,7 +26,7 @@ else
 {
 %>
 	<div class="addNewCoupon">
-	<form action="/action_page.php">
+	<form action="adminAddCoupon.jsp">
    id : <input type="text" name="id"><br>
    Title :<input type="text" name="title"><br>
    Start date: <input type="text" name="startdate"><br>

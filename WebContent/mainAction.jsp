@@ -23,12 +23,12 @@
 			switch (clientType) {
 				case ADMIN: {
 					AdminFacade adminFacade = (AdminFacade) couponClientFacade;
-					session.setAttribute("AdminFacade", adminFacade);
+					session.setAttribute("adminFacade", adminFacade);
 					
 		%>
 		<h1>
 			Hello admin !
-		<form action="admiAddCoupon.jsp" method="post">
+		<form action="adminAddCoupon.jsp" method="post">
 		<button type="submit" class="adminrcpn">add coupons into the system</button>
 	
 	</form>

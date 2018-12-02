@@ -19,7 +19,24 @@ public class CustomerFacade implements CouponClientFacade {
 	private String customerName;
 	
 
-	@Override
+	public void addNewCoupon4Customer(long couponId , long customerId)
+	{
+		Connection connection = ConnectionPool.getInstance().getConnection();
+		try {
+			PreparedStatement prepareStatement = connection.prepareStatement(
+					"INSERT INTO `customer_coupon` (`CUST_ID`, `COUPON_ID`) VALUES (?, ?) ;");
+			prepareStatement.setLong(1, customerId);
+			prepareStatement.setLong(2, couponId);
+			prepareStatement.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			ConnectionPool.getInstance().returnconnection(connection);
+		}
+	}
+	
+	
 	public boolean login(String name, String password, ClientType clientType) {
 		Connection connection = ConnectionPool.getInstance().getConnection();
 		try {

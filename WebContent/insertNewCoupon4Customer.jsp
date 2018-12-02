@@ -16,16 +16,15 @@
 		<%
 			CustomerFacade customerFacade = (CustomerFacade) session.getAttribute("customerFacade");
 			String customerId = customerFacade.getCustomerID();
-			Coupon coupon = (Coupon) session.getAttribute("coupon");
-	
+			long coupon_id = Long.parseLong(request.getParameter("id"));
+			customerFacade.addNewCoupon4Customer(coupon_id, Long.parseLong(customerId));
 		%>	
 		<h1>
-		coupon 
 		<%=customerFacade.getCustomerName()%>
-		from
-		<%=coupon.getId()%>
-		with ID
+		with id  
 		<%=customerFacade.getCustomerID()%>
+		bought coupon
+		<%=request.getParameter("id")%>
 	</h1>
 	
 	</div>
